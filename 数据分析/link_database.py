@@ -6,9 +6,13 @@ class Link_database(object):
                                      port=3306,
                                      user='root',
                                      password='951127',
-                                     db='mysql',
+                                     db='test',
                                      charset='utf8')
-        pass
+        self.cursor = self.connection.cursor()
+
+        def select():
+            pass
+
 
 
 
