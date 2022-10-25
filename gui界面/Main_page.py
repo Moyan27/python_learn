@@ -5,7 +5,7 @@ class Main_page(object):
     def __init__(self,master):
         self.root = master
         self.root.resizable(0,0)
-        self.root.geometry('900x600+400+180')
+        self.root.geometry('500x300+300+180')
         self.root.title('Mainpage')
         #self.root.iconbitmap('/sdcard/pycode/gui界面/1.ico')
         self.create_menu_page()

@@ -9,7 +9,7 @@ class Goin_page(object):
         
         self.root = root
         self.root.resizable(0, 0)
-        self.root.geometry('700x400+500+300')
+        self.root.geometry('400x300+300+200')
         self.root.title('Goinpage')
         #self.root.iconbitmap('/sdcard/pycode/gui界面/1.ico')
         self.user_name = tk.StringVar()

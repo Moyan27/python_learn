@@ -14,8 +14,10 @@ class Link_database(object):
         sql='show tables;'
         self.cursor.execute(sql)
         datas=self.cursor.fetchall()
+        data_list=[]
         for i in datas:
-            print(i)
+            data_list.append(i[0])
+        print(data_list)
 
 
 
