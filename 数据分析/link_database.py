@@ -23,9 +23,5 @@ class Link_database(object):
 
 
 
-
-
-
-
 if __name__ == "__main__":
     Link_database().show_tables()
