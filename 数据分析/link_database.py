@@ -10,8 +10,12 @@ class Link_database(object):
                                      charset='utf8')
         self.cursor = self.connection.cursor()
 
-        def select():
-            pass
+    def show_tables(self):
+        sql='show tables;'
+        self.cursor.execute(sql)
+        datas=self.cursor.fetchall()
+        for i in datas:
+            print(i)
 
 
 
@@ -22,4 +26,4 @@ class Link_database(object):
 
 
 if __name__ == "__main__":
-    Link_database()
+    Link_database().show_tables()
