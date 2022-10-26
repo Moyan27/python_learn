@@ -101,3 +101,4 @@ if __name__ == '__main__':
         quit()
     page=int(input('{:_^19}:'.format('输入要下载的页数')))
     Wallpaper(choice,page).run()
+    
