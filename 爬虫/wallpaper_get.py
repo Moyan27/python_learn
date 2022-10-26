@@ -3,9 +3,7 @@ import requests
 from lxml import etree
 import threading
 import os
-# from tqdm import tqdm
-# from fake_useragent import UserAgent
-# import ptest
+
 
 class Wallpaper(object):
     def __init__(self, page):
