@@ -38,7 +38,7 @@ class Wallpaper(object):
         res=requests.get(url,headers=self.headers)
         xml=etree.HTML(res.content.decode('utf-8'))
         content_url= xml.xpath('//*[@id="wallpaper"]/@src')
-        reponse=requests.get(content_url)
+        reponse=requests.get(content_url[0])
         with open('{}/wallpaper/{}.jpg'.format(self.path,n),'wb')as f:
             f.write(reponse.content)
 
