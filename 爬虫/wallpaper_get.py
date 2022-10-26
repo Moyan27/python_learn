@@ -4,10 +4,10 @@ from lxml import etree
 import threading
 import os
 import time
-
+from prettytable import PrettyTable
 
 class Wallpaper(object):
-    def __init__(self, page):
+    def __init__(self,choice,page):
         choice_dict={
             '4k':'https://wallhaven.cc/search?q=id%3A65348&sorting=random&ref=fp&seed=B6VgC9&page={}',
             '角色扮演':'https://wallhaven.cc/search?q=id%3A12757&sorting=random&ref=fp&seed=7hArcC&page={}',
@@ -15,12 +15,25 @@ class Wallpaper(object):
             '天空':'https://wallhaven.cc/search?q=id%3A2729&sorting=random&ref=fp&seed=NrgcI0&page={}',
             '八重':'https://wallhaven.cc/search?q=id%3A123704&sorting=random&ref=fp&seed=5XjrDM&page={}',
             'AI艺术':'https://wallhaven.cc/search?q=id%3A133451&sorting=random&ref=fp&seed=PDMlRo&page={}',
-            '女仆':'https://wallhaven.cc/search?q=id%3A5987&sorting=random&ref=fp&seed=MhtR6y&page={}'
+            '女仆':'https://wallhaven.cc/search?q=id%3A5987&sorting=random&ref=fp&seed=MhtR6y&page={}',
+            '排行榜':'https://wallhaven.cc/toplist?page={}'
         }
         self.url_list=[]
         self.data_url_list=[]
+        if choice == '1':
+            url = choice_dict['4k']
+        elif choice == '2':
+            url = choice_dict['角色扮演']
+        elif choice == '3':
+            url = choice_dict['八重']
+        elif choice == '4':
+            url = choice_dict['排行榜']
+        elif choice == '5':
+            url = choice_dict['自然景观']
+        elif choice == '6':
+            url = choice_dict['女仆']
         for i in range(1,page + 1):
-            url=choice_dict['女仆'].format(i)
+            url=url.format(i)
             self.url_list.append(url)
         self.headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.52',
@@ -39,11 +52,14 @@ class Wallpaper(object):
         xml=etree.HTML(res.content.decode('utf-8'))
         content_url= xml.xpath('/html/body/main/section/div[1]/img/@src')
         if content_url!=[]:
-            #print('{}:'.format(n),content_url)
-            content_data=requests.get(content_url[0]).content
-            with open('{}/wallpaper/{}'.format(self.path,content_url[0].split('/')[-1]),'wb')as f:
-                f.write(content_data)
-            print('{}下载完成'.format(content_url[0].split('/')[-1]))
+            # print('{}:'.format(n),content_url)
+            if os.path.exists('{}/wallpaper/{}'.format(self.path,content_url[0].split('/')[-1])):
+                print('{} ---已下载过'.format(content_url[0].split('/')[-1]))
+            else:
+                content_data=requests.get(content_url[0]).content
+                with open('{}/wallpaper/{}'.format(self.path,content_url[0].split('/')[-1]),'wb')as f:
+                    f.write(content_data)
+                print('{} ---下载完成'.format(content_url[0].split('/')[-1]))
     def get_data(self):
         for url in self.url_list:
             response = requests.get(url=url,headers=self.headers)
@@ -60,14 +76,28 @@ class Wallpaper(object):
             n+=1
     def run(self):
         self.build_savepath()
-        print('正在整合数据')
+        print('{:-^20}'.format('正在整合数据'))
         self.get_data()
         #print(self.data_url_list)
-        print('整合完成，尝试爬取..')
-        print('正在多线程爬取..')
+        print('{:-^20}'.format('整合完成--尝试爬取'))
+        print('{:-^20}'.format('正在多线程爬取'))
         self.built_threading()
-        
 
 if __name__ == '__main__':
-    page=int(input('输入要下载的页数:'))
-    Wallpaper(page).run()
+    tb = PrettyTable()
+    tb.field_names = ['输入的值', '种类']
+    tb.add_rows([
+        ['1', '4k'],
+        ['2', '角色扮演'],
+        ['3', '八重'],
+        ['4', '排行榜'],
+        ['5','自然景观'],
+        ['6','女仆'],
+        ['以上都不是','退出']
+    ])
+    print(tb)
+    choice=input('{:_^19}:'.format('要下载的种类'))
+    if choice not in ['1','2','3','4','5','6']:
+        quit()
+    page=int(input('{:_^19}:'.format('输入要下载的页数')))
+    Wallpaper(choice,page).run()
