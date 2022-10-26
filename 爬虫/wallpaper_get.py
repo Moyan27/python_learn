@@ -8,10 +8,19 @@ import time
 
 class Wallpaper(object):
     def __init__(self, page):
+        choice_dict={
+            '4k':'https://wallhaven.cc/search?q=id%3A65348&sorting=random&ref=fp&seed=B6VgC9&page={}',
+            '角色扮演':'https://wallhaven.cc/search?q=id%3A12757&sorting=random&ref=fp&seed=7hArcC&page={}',
+            '自然景观':'https://wallhaven.cc/search?q=id%3A711&sorting=random&ref=fp&seed=Uq6SJr&page={}',
+            '天空':'https://wallhaven.cc/search?q=id%3A2729&sorting=random&ref=fp&seed=NrgcI0&page={}',
+            '八重':'https://wallhaven.cc/search?q=id%3A123704&sorting=random&ref=fp&seed=5XjrDM&page={}',
+            'AI艺术':'https://wallhaven.cc/search?q=id%3A133451&sorting=random&ref=fp&seed=PDMlRo&page={}',
+            '女仆':'https://wallhaven.cc/search?q=id%3A5987&sorting=random&ref=fp&seed=MhtR6y&page={}'
+        }
         self.url_list=[]
         self.data_url_list=[]
         for i in range(1,page + 1):
-            url = 'https://wallhaven.cc/search?q=id%3A65348&sorting=random&ref=fp&seed=B6VgC9&page={}'.format(i)
+            url=choice_dict['女仆'].format(i)
             self.url_list.append(url)
         self.headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.52',
@@ -35,7 +44,6 @@ class Wallpaper(object):
             with open('{}/wallpaper/{}'.format(self.path,content_url[0].split('/')[-1]),'wb')as f:
                 f.write(content_data)
             print('{}下载完成'.format(content_url[0].split('/')[-1]))
-
     def get_data(self):
         for url in self.url_list:
             response = requests.get(url=url,headers=self.headers)
@@ -43,7 +51,6 @@ class Wallpaper(object):
             data=html.xpath('//*[@id="thumbs"]/section/ul/li/figure/a[2]/@href')
             self.data_url_list.append(data)
         self.data_url_list=list(np.ravel(self.data_url_list))
-
     def built_threading(self):
         n=1
         for url in self.data_url_list:
@@ -51,7 +58,6 @@ class Wallpaper(object):
             time.sleep(1.5)
             t.start()
             n+=1
-
     def run(self):
         self.build_savepath()
         print('正在整合数据')
