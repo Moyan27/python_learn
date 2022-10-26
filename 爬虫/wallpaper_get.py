@@ -5,6 +5,7 @@ import threading
 import os
 from tqdm import tqdm
 from fake_useragent import UserAgent
+import ptest
 
 
 class Wallpaper(object):
@@ -59,7 +60,8 @@ class Wallpaper(object):
     def run(self):
         self.build_savepath()
         self.get_data()
-        self.built_threading()
+        self.save_data(self.data_url_list[4],1)
+        #self.built_threading()
 
 if __name__ == '__main__':
     page=int(input('输入要下载的页数:'))
