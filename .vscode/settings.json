@@ -46,13 +46,13 @@
     "eslint.rules.customizations": [
     
     ],
-    "workbench.iconTheme": "office-material-icon-theme",
+    "workbench.iconTheme": "material-icon-theme",
     "avdmanager.sdkPath": "/sdcard/Android",
     "device-manager.manageAllDevices": true,
     "cloudmusic.account.autoCheck": true,
     "cloudmusic.network.proxy": "",
     "cloudmusic.queue.initialization": "recommend",
-    "workbench.colorTheme": "One Dark Modern",
+    "workbench.colorTheme": "MacOS Modern Dark - Xcode Modern",
     "WavPreview.autoPlay": true,
     "WavPreview.autoAnalyze": true,
     "database-client.complectionTriggerKey": [
