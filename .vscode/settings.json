@@ -52,7 +52,7 @@
     "cloudmusic.account.autoCheck": true,
     "cloudmusic.network.proxy": "",
     "cloudmusic.queue.initialization": "recommend",
-    "workbench.colorTheme": "MacOS Modern Dark - Xcode Modern",
+    "workbench.colorTheme": "GitHub Dark",
     "WavPreview.autoPlay": true,
     "WavPreview.autoAnalyze": true,
     "database-client.complectionTriggerKey": [
