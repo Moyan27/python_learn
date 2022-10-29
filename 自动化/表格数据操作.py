@@ -8,3 +8,4 @@ path=os.path.dirname(__file__)
 
 df1= pd.read_excel('{}/1.xlsx'.format(path),sheet_name='Sheet1')
 print(df1)
+print()
