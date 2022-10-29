@@ -92,7 +92,7 @@
     "gitlens.defaultTimeFormat": null,
     "git.confirmSync": false,
     "background.customImages": [
-        "file:///D:/下载图片/mm.jpg"
+        "file:///home/mm.jpg"
     ],
     "background.useDefault": false,
     "background.useFront": true,
