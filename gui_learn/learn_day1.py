@@ -1,11 +1,12 @@
-from tkinter import *
-from tkinter import messagebox
+import webview
 
-# 创建窗口：实例化一个窗口对象。
-root = Tk()
-
-# 窗口大小
-root.geometry("600x450+374+182")
-
-# 显示窗口
-root.mainloop()
+window = webview.create_window(
+    title='百度一下,全是广告',
+    url='http://www.baidu.com',
+    width=850,
+    height=600,
+    resizable=False,    # 固定窗口大小
+    text_select=False,   # 禁止选择文字内容
+    confirm_close=True   # 关闭时提示
+)
+webview.start()
