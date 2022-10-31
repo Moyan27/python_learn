@@ -71,14 +71,14 @@ class Wallpaper(object):
         n=1
         for url in self.data_url_list:
             t=threading.Thread(target=self.save_data,args=(url,n))
-            time.sleep(1.5)
+            time.sleep(2)
             t.start()
             n+=1
     def run(self):
         self.build_savepath()
         print('{:-^20}'.format('正在整合数据'))
         self.get_data()
-        #print(self.data_url_list)
+        print(len(list(set(self.data_url_list))))
         print('{:-^20}'.format('整合完成--尝试爬取'))
         print('{:-^20}'.format('正在多线程爬取'))
         self.built_threading()
