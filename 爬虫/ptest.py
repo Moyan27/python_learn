@@ -1,12 +1,9 @@
-import requests
+import numpy as np
 
-class Test_geturl(object):
-    def __init__(self,url):
-        resoponse=requests.get(url)
-        print(resoponse.status_code)
-        
+a=[[1,2,3,4],[5,6,7,8],[9,10]]
+b=[]
+for i in a:
+    b+=i[0:len(i)+1]
+    print(i[0:-1])
     
-
-if __name__=="__main__":
-    Test_geturl(url)
-    
+print(b)
