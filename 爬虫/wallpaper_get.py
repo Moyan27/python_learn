@@ -71,7 +71,7 @@ class Wallpaper(object):
         n=1
         for url in self.data_url_list:
             t=threading.Thread(target=self.save_data,args=(url,n))
-            time.sleep(1.5)
+            time.sleep(2)
             t.start()
             n+=1
     def run(self):
