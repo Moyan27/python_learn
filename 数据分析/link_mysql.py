@@ -39,11 +39,9 @@ class Link_mysql(object):
         data=list(data)
         print('表名：',data[0])
         print('建表语句：',data[1])
-    
-    #   
 
     #查询一个表
-    def select_data(self,table_name,query_type,by_sc_value=None,by_where=None,key='*',by_sc='desc',by_limit=[1,10]):
+    def select_data(self,table_name,query_type,by_sc_value=None,by_where=None,key='*',by_sc='desc',by_limit=[1,10],by_fixed=None):
         if query_type=='default':
             sql='select {} from {};'.format(key,table_name)
         elif query_type=='by_where':
@@ -55,9 +53,15 @@ class Link_mysql(object):
                 if j==1:
                     by_limit[0]=0
             sql='select {} from {} limit {};'.format(key,table_name,','.join(str(i)for i in by_limit))
+        elif query_type=='fixed':
+            sql='select {} from {} {}'.format(key,table_name,by_fixed)
         self.cur.execute(sql)
         data=self.cur.fetchall()
-        return data       
+        return data 
+    #删除数据
+    def delete_data(self,table_name,delete_type,):
+        if delete_type=='default':
+            sql='delete '
         
     def colse_database(self):
         self.db.commit()  
