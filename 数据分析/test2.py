@@ -1,3 +1,3 @@
-from link_mysql import Link_mysql
+s=((1,2),(3,4),(5,6))
 
-Link_mysql('test_db').add_daea('user_info', ['zhan','951127'])
+print(','.join(str(i)for i in s))

@@ -25,21 +25,35 @@ class Link_mysql(object):
             )default charset=utf8;
         '''.format(table_name,' '.join(value_list))
         self.cur.execute(sql)
-    
-    def add_daea(self,table_name,value_tuple):
-        sql='insert into {} values {}'.format(table_name,tuple(value_tuple))
+    #添加数据
+    def add_data(self,table_name,value_tuple):
+        sql='insert into {} values {};'.format(table_name,','.join(str(i)for i in value_tuple))
         self.cur.execute(sql)
         self.db.commit()
     
-    #查询一个表
-    def select_data(self,table_name):
-        sql='select * from {};'.format(table_name)
+    #查看建表结构
+    def show_creat_table_info(self,table_name):
+        sql='show create table {}'.format(table_name)
         self.cur.execute(sql)
-        data=self.cur.fetchall()
-        data_list=[]
-        for i in data:
-            data_list.append(i)
-        return data_list        
+        data=list(self.cur.fetchall())[0]
+        data=list(data)
+        print('表名：',data[0])
+        print('建表语句：',data[1])
+    
+    #   
+
+    #查询一个表
+    def select_data(self,table_name,query_type,by_where=None,key='*'):
+        if query_type=='direct':
+            sql='select {} from {};'.format(key,table_name)
+            self.cur.execute(sql)
+            data=self.cur.fetchall()
+        elif query_type=='by_where':
+            sql='select {} from {} where {};'.format(key,table_name,by_where)
+            self.cur.execute(sql)
+            data=self.cur.fetchall()
+            print(list(data))
+        return data       
         
     def colse_database(self):
         self.db.commit()  
@@ -56,5 +70,13 @@ if __name__=="__main__":
     #     'age','int'
     # ])
     #mysql.create_table('table_name')
-    
-    
+    #mysql.show_creat_table_info('user_info')
+    #mysql.add_data('user_info', [
+    #    ('root','951127'),
+    #    ('zhanyan','951127'),
+    #    ('zy','123456')
+    #])
+    #data1=mysql.select_data(table_name='user_info', query_type='direct')
+    #print(data1)
+    #data2=mysql.select_data(table_name='user_info', query_type='by_where',by_where="user_name='root'")
+    #print(data2)
