@@ -25,6 +25,12 @@ class Link_mysql(object):
             )default charset=utf8;
         '''.format(table_name,' '.join(value_list))
         self.cur.execute(sql)
+    
+    def add_daea(self,table_name,value_tuple):
+        sql='insert into {} values {}'.format(table_name,tuple(value_tuple))
+        self.cur.execute(sql)
+        self.db.commit()
+    
     #查询一个表
     def select_data(self,table_name):
         sql='select * from {};'.format(table_name)
@@ -44,9 +50,11 @@ class Link_mysql(object):
         self.colse_database()
 
 if __name__=="__main__":
-    db=Link_mysql('test_db')
-    # db.create_table('usr',[
+    mysql=Link_mysql('test_db')
+    # mysql.create_table('usr',[
     #     'name','varchar(20)',
     #     'age','int'
     # ])
-    #db.create_table('table_name')
+    #mysql.create_table('table_name')
+    
+    
