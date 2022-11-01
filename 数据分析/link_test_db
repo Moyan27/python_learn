@@ -1,6 +1,5 @@
 import pymysql
- 
- 
+  
 class Link_mysql(object):
     def __init__(self,database):
         self.db =pymysql.connect(
@@ -11,16 +10,20 @@ class Link_mysql(object):
         )
         self.cur=self.db.cursor()
     #创建一个新表
-    def create_table(self,table_name):
+    def create_table(self,table_name,value_list=['name','varchar(20)']):
+        s=[]
+        for index,a in enumerate(value_list):
+            s.append(a)
+            if index!=len(value_list)-1:
+                if (index+1)%2==0:
+                    s.append(',\n')
+            elif index==len(value_list)-1:
+                value_list=s
         sql='''
             create table {}(
-                name varchar(20),
-                age int(5),
-                sex char(1),
-                phone varchar(50),
-                dress varchar(50)
+                {}
             )default charset=utf8;
-        '''.format(table_name)
+        '''.format(table_name,' '.join(value_list))
         self.cur.execute(sql)
     #查询一个表
     def select_data(self,table_name):
@@ -41,5 +44,9 @@ class Link_mysql(object):
         self.colse_database()
 
 if __name__=="__main__":
-    Link_mysql()
-    
+    db=Link_mysql('test_db')
+    # db.create_table('usr',[
+    #     'name','varchar(20)',
+    #     'age','int'
+    # ])
+    #db.create_table('table_name')
