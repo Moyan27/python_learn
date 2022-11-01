@@ -43,16 +43,20 @@ class Link_mysql(object):
     #   
 
     #查询一个表
-    def select_data(self,table_name,query_type,by_where=None,key='*'):
-        if query_type=='direct':
+    def select_data(self,table_name,query_type,by_sc_value=None,by_where=None,key='*',by_sc='desc',by_limit=[1,10]):
+        if query_type=='default':
             sql='select {} from {};'.format(key,table_name)
-            self.cur.execute(sql)
-            data=self.cur.fetchall()
         elif query_type=='by_where':
             sql='select {} from {} where {};'.format(key,table_name,by_where)
-            self.cur.execute(sql)
-            data=self.cur.fetchall()
-            print(list(data))
+        elif query_type=='by_sc':
+            sql='select {} from {} order by {} {};'.format(key,table_name,by_sc_value,by_sc)
+        elif query_type=='by_limit':
+            for j in by_limit:
+                if j==1:
+                    by_limit[0]=0
+            sql='select {} from {} limit {};'.format(key,table_name,','.join(str(i)for i in by_limit))
+        self.cur.execute(sql)
+        data=self.cur.fetchall()
         return data       
         
     def colse_database(self):
@@ -65,18 +69,3 @@ class Link_mysql(object):
 
 if __name__=="__main__":
     mysql=Link_mysql('test_db')
-    # mysql.create_table('usr',[
-    #     'name','varchar(20)',
-    #     'age','int'
-    # ])
-    #mysql.create_table('table_name')
-    #mysql.show_creat_table_info('user_info')
-    #mysql.add_data('user_info', [
-    #    ('root','951127'),
-    #    ('zhanyan','951127'),
-    #    ('zy','123456')
-    #])
-    #data1=mysql.select_data(table_name='user_info', query_type='direct')
-    #print(data1)
-    #data2=mysql.select_data(table_name='user_info', query_type='by_where',by_where="user_name='root'")
-    #print(data2)

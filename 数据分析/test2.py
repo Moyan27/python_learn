@@ -1,3 +1,2 @@
-s=((1,2),(3,4),(5,6))
-
-print(','.join(str(i)for i in s))
+a=[1,4]
+print(','.join(str(eval(str(i))-1)for i in a))
