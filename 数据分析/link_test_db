@@ -1,0 +1,45 @@
+import pymysql
+ 
+ 
+class Link_mysql(object):
+    def __init__(self,database):
+        self.db =pymysql.connect(
+            host='localhost',
+            user='root',
+            passwd='951127',
+            db='{}'.format(database)
+        )
+        self.cur=self.db.cursor()
+    #创建一个新表
+    def create_table(self,table_name):
+        sql='''
+            create table {}(
+                name varchar(20),
+                age int(5),
+                sex char(1),
+                phone varchar(50),
+                dress varchar(50)
+            )default charset=utf8;
+        '''.format(table_name)
+        self.cur.execute(sql)
+    #查询一个表
+    def select_data(self,table_name):
+        sql='select * from {};'.format(table_name)
+        self.cur.execute(sql)
+        data=self.cur.fetchall()
+        data_list=[]
+        for i in data:
+            data_list.append(i)
+        return data_list        
+        
+    def colse_database(self):
+        self.db.commit()  
+        self.cur.close()
+        self.db.close()
+    
+    def run(self):
+        self.colse_database()
+
+if __name__=="__main__":
+    Link_mysql()
+    

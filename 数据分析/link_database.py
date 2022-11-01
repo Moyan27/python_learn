@@ -6,7 +6,7 @@ class Link_database(object):
                                      port=3306,
                                      user='root',
                                      password='951127',
-                                     db='test',
+                                     db='test_db',
                                      charset='utf8')
         self.cursor = self.connection.cursor()
 
@@ -18,10 +18,10 @@ class Link_database(object):
         for i in datas:
             data_list.append(i[0])
         print(data_list)
-
-
-
+    
+    def creat_table(self):
+        pass
 
 
 if __name__ == "__main__":
-    Link_database().show_tables()
+    Link_database()
