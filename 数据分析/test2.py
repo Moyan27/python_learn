@@ -1,2 +1,7 @@
-a=[1,4]
-print(','.join(str(eval(str(i))-1)for i in a))
+import pandas as pd 
+import os
+
+path =os.path.dirname(__file__)
+
+data=pd.read_csv('{}/1.csv'.format(path))
+print(data)

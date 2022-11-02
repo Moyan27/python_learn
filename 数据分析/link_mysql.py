@@ -25,6 +25,7 @@ class Link_mysql(object):
             )default charset=utf8;
         '''.format(table_name,' '.join(value_list))
         self.cur.execute(sql)
+    
     #添加数据
     def add_data(self,table_name,value_tuple):
         sql='insert into {} values {};'.format(table_name,','.join(str(i)for i in value_tuple))
@@ -37,8 +38,13 @@ class Link_mysql(object):
         self.cur.execute(sql)
         data=list(self.cur.fetchall())[0]
         data=list(data)
-        print('表名：',data[0])
-        print('建表语句：',data[1])
+        data_new=dict({
+            '表名':data[0],
+            '建表语句':data[1]
+        })
+        return data_new
+        #print('表名：',data[0])
+        #print('建表语句：',data[1])
 
     #查询一个表
     def select_data(self,table_name,query_type,by_sc_value=None,by_where=None,key='*',by_sc='desc',by_limit=[1,10],by_fixed=None):
@@ -54,14 +60,32 @@ class Link_mysql(object):
                     by_limit[0]=0
             sql='select {} from {} limit {};'.format(key,table_name,','.join(str(i)for i in by_limit))
         elif query_type=='fixed':
-            sql='select {} from {} {}'.format(key,table_name,by_fixed)
+            sql='select {} from {} {};'.format(key,table_name,by_fixed)
         self.cur.execute(sql)
         data=self.cur.fetchall()
         return data 
     #删除数据
-    def delete_data(self,table_name,delete_type,):
+    def delete_data(self,table_name,delete_type,by_fixed='',by_where='',key='*'):
         if delete_type=='default':
-            sql='delete '
+            sql='delete from {};'.format(table_name)
+        elif delete_type=='by_where':
+           sql='delete from {} where {};'.format(table_name,by_where)
+        elif delete_type=='fixed':
+            sql='delete from {} {};'.format(table_name,)
+        self.cur.execute(sql)
+        self.db.commit()
+    
+    #修改/更新表数据
+    def update_data(self,table_name,update_type,update_value,by_where='',by_fixed=''):
+        if update_type=='default':
+            sql='update {} set {};'.format(table_name,update_value)
+        elif update_type=='by_where':
+            sql='update {} set {} where {}'.format(table_name,update_value,by_where)
+        elif update_type=='fixed':
+            sql='ipdate {} set {}'.format(table_name,update_value,by_fixed)
+        self.cur.execute(sql)
+        self.db.commit()
+            
         
     def colse_database(self):
         self.db.commit()  
