@@ -1,12 +1,5 @@
-import requests
+import os
 
-class Test_geturl(object):
-    def __init__(self,url):
-        resoponse=requests.get(url)
-        print(resoponse.status_code)
-        
-    
+path=os.listdir('/home/python_learn/爬虫/wallpaper')
 
-if __name__=="__main__":
-    Test_geturl(url)
-    
+print(len(path))

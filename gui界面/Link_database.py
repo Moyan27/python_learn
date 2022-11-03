@@ -9,7 +9,7 @@ class Link_database():
             password='951127',  # 数据库密码
             port=3306,  # 端口,默认为3306
             charset='utf8',  # 编码
-            database='test'  # 选择数据库
+            database='test_db'  # 选择数据库
         )
         # 创建游标对象
         self.cur = self.db.cursor()
