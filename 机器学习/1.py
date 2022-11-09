@@ -42,5 +42,5 @@ def deom4():
     data = '我爱北京天安门'
     a = ' '.join(list(jieba.cut(data)))
     print(a)
-
+    
 deom4()
