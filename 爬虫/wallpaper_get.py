@@ -42,7 +42,8 @@ class Wallpaper(object):
         }
     def build_savepath(self):
         #self.path=os.getcwd()
-        self.path=os.path.dirname(__file__)
+        #self.path=os.path.dirname(__file__)
+        self.path='../../sdcard'
         if os.path.exists('{}/wallpaper'.format(self.path)):
             pass
         else:

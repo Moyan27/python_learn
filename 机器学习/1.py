@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
+import pandas as pd 
 import jieba
 
 
@@ -43,4 +44,5 @@ def deom4():
     a = ' '.join(list(jieba.cut(data)))
     print(a)
     
-deom4()
+def demo5():
+    pass
