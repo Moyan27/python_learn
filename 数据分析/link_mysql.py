@@ -96,4 +96,4 @@ class Link_mysql(object):
         self.colse_database()
 
 if __name__=="__main__":
-    mysql=Link_mysql('test_db')
+    mysql=Link_mysql('test')
