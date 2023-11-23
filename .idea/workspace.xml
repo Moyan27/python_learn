@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="288c7254-0936-462b-bc13-3f18bea244bd" name="变更" comment="gx" />
+    <list default="true" id="288c7254-0936-462b-bc13-3f18bea244bd" name="变更" comment="gx">
+      <change beforePath="$PROJECT_DIR$/无聊制作/进度条3.py" beforeDir="false" afterPath="$PROJECT_DIR$/无聊制作/进度条3.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -255,7 +257,7 @@
       <workItem from="1700570616808" duration="4292000" />
       <workItem from="1700640071059" duration="377000" />
       <workItem from="1700640455057" duration="5080000" />
-      <workItem from="1700726361639" duration="813000" />
+      <workItem from="1700726361639" duration="1656000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1666621982431</created>
@@ -571,7 +573,7 @@
     <SUITE FILE_PATH="coverage/python_learn$learn_day1__1_.coverage" NAME="learn_day1 (1) 覆盖结果" MODIFIED="1669896304557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/线性代数" />
     <SUITE FILE_PATH="coverage/python_learn$link_mysql.coverage" NAME="link_mysql 覆盖结果" MODIFIED="1700636124049" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/数据分析" />
     <SUITE FILE_PATH="coverage/python$link_database.coverage" NAME="link_database 覆盖结果" MODIFIED="1666668890270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/数据分析" />
-    <SUITE FILE_PATH="coverage/python_learn$3.coverage" NAME="进度条3 覆盖结果" MODIFIED="1700727611248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/无聊制作" />
+    <SUITE FILE_PATH="coverage/python_learn$3.coverage" NAME="进度条3 覆盖结果" MODIFIED="1700729122538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/无聊制作" />
     <SUITE FILE_PATH="coverage/python$main.coverage" NAME="main 覆盖结果" MODIFIED="1666623322310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_learn$mat.coverage" NAME="mat绘图 覆盖结果" MODIFIED="1700639987007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/数据分析" />
     <SUITE FILE_PATH="coverage/_py$learn_day1.coverage" NAME="learn_day1 覆盖结果" MODIFIED="1667096379656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui_learn" />
